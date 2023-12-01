@@ -1,4 +1,4 @@
-# Iterative Power Method
+# The Inverse Power Method
 import numpy as np
 
 
