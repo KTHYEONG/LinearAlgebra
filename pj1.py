@@ -2,7 +2,7 @@
 import numpy as np
 
 
-def iterative_power_method(matrix, x, max_iterations=1000, diff=0.00001):
+def Iterative_power_method(matrix, x, max_iterations=1000, diff=0.00001):
     prev_u = float("inf")
 
     for iteration in range(max_iterations):
@@ -15,7 +15,6 @@ def iterative_power_method(matrix, x, max_iterations=1000, diff=0.00001):
         print(u)
         if np.abs(u - prev_u) < diff:
             return u
-            break
 
         prev_u = u
 
@@ -24,5 +23,5 @@ def iterative_power_method(matrix, x, max_iterations=1000, diff=0.00001):
 MATRIX = np.array([[6, 5], [1, 2]])
 x = np.array([0, 1])
 
-eigenvalue = iterative_power_method(MATRIX, x)
+eigenvalue = Iterative_power_method(MATRIX, x)
 print(eigenvalue)

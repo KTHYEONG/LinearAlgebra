@@ -2,27 +2,30 @@
 import numpy as np
 
 
-def iterative_power_method(matrix, x, max_iterations=1000, diff=0.00001):
+def Inverse_power_method(matrix, x, max_iterations=1000, diff=0.00001):
+    estimate = 3.3
+
     prev_u = float("inf")
 
     for iteration in range(max_iterations):
-        x = np.dot(matrix, x) - 0.0
-        print(x)
+        # (A - 3.3I)y Solve
+        x = np.linalg.solve(matrix - estimate * np.identity(matrix.shape[0]), x)
+
         u = max(x)
+
+        v = estimate + 1 / u
+
         x /= u
 
-        print(x)
-        print(u)
         if np.abs(u - prev_u) < diff:
-            return u
-            break
+            return v
 
         prev_u = u
 
 
 # 초기 설정
-MATRIX = np.array([[6, 5], [1, 2]])
-x = np.array([0, 1])
+MATRIX = np.array([[10, -8, -4], [-8, 13, 4], [-4, 5, 4]])
+x = np.array([1, 1, 1])
 
-eigenvalue = iterative_power_method(MATRIX, x)
+eigenvalue = Inverse_power_method(MATRIX, x)
 print(eigenvalue)
